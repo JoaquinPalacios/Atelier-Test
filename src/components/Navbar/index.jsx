@@ -1,6 +1,6 @@
-import { Link, NavLink, BrowserRouter as Router } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+import { NavLink } from "react-router-dom";
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
@@ -16,18 +16,15 @@ const Navbar = () => {
     }, []);
     
     return (
-        <>
-            <Router>
-                <div className={styles.navbarContainer}>
-                    <NavLink to='./' className={styles.navbarHome}>Home</NavLink>
-                 {result.map((value) => (
-                     <span className={styles.navbarItems}>
-                             <Link to={value.properties.title} style={{ textDecoration: 'none' }}>{value.properties.title}</Link>
-                     </span>                                  
-                  ))}
-                  {/* <Route path='value/:id' component={ItemDetail} /> */}
-                </div>
-            </Router>
+        <>            
+            <div className={styles.navbarContainer}>
+                <NavLink to='./' className={styles.navbarHome}>Home</NavLink>
+             {result.map((value) => (
+                 <span className={styles.navbarItems}>
+                         <NavLink to={`/MovieDetail/${value.properties.title}`} style={{ textDecoration: 'none' }}>{value.properties.title}</NavLink>
+                 </span>                                  
+              ))}
+            </div>
         </>
     );
 }

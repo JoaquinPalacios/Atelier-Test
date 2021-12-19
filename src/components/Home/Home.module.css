@@ -30,3 +30,6 @@
   border: none;
   margin-bottom: 0.5em;
 }
+.linkStyle {
+  text-decoration: none;
+}

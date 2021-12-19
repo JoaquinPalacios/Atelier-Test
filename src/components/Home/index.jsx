@@ -1,3 +1,4 @@
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { FaHeart } from "react-icons/fa";
@@ -61,7 +62,9 @@ const Home = () => {
             <tbody className={styles.films}>
               <tr>
                 <td>
-                  {value.properties.title}{" "}
+                  <nav><NavLink to={`/MovieDetail/${value.properties.title}`} className={styles.linkStyle}>{value.properties.title}{" "}</NavLink></nav>
+                  {/* {value.properties.title}{" "} */}
+                  <Outlet />
                   <b onClick={() => removeFav(value._id)}><FaHeart color="#b0d688" /></b>
                 </td>
               </tr>
@@ -75,7 +78,8 @@ const Home = () => {
             <tbody className={styles.films}>
               <tr>
                 <td>
-                  {value.properties.title}{" "}
+                <nav><NavLink to={`/MovieDetail/${value.properties.title}`} className={styles.linkStyle}>{value.properties.title}{" "}</NavLink></nav>
+                  {/* {value.properties.title}{" "} */}
                   <b onClick={() => addFav(value._id)}><FaRegHeart /></b>
                 </td>
               </tr>
