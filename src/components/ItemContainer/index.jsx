@@ -1,10 +1,36 @@
-import ItemDetail from "../ItemDetail";
+import { useEffect, useState } from "react";
 
-const ItemContainer = ({ data }) => {
+import MovieDetail from "../MovieDetail";
+import { useParams } from "react-router-dom";
+
+const ShowMovie = (movieId) => {
+    const [result, setResult] = useState([]);
+
+    const fetchData = async () => {
+        const res = await fetch("https://www.swapi.tech/api/films/");
+        const json = await res.json();
+        setResult(json.result);
+    }
+    useEffect(() => {
+        fetchData();
+    }, []);
+    return new Promise((res) => 
+    res(result.find((value) => value.properties.title === movieId)))
+}
+
+const ItemContainer = () => {
+    const [films, setFilms] = useState([]);
+    const { movieId } = useParams([]);
+    console.log('params movieId container', movieId)
+
+    useEffect(() => {
+        ShowMovie(movieId).then((value) => {
+            setFilms(value.properties.title)
+        })
+    }, [movieId])
     return (
-        <div>
-            <ItemDetail data={data} />
-        </div>
+        // <h1>{films.properties.title}</h1>
+            <MovieDetail key={films.properties.title} films={films} />
     );
 }
  
