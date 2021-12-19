@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 
-import MovieDetail from "../MovieDetail";
 import { useParams } from "react-router-dom";
+
+// import MovieDetail from "../MovieDetail";
+
 
 const ShowMovie = (movieId) => {
     const [result, setResult] = useState([]);
