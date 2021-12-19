@@ -62,10 +62,13 @@ const Home = () => {
             <tbody className={styles.films}>
               <tr>
                 <td>
-                  <nav><NavLink to={`/MovieDetail/${value.properties.title}`} className={styles.linkStyle}>{value.properties.title}{" "}</NavLink></nav>
-                  {/* {value.properties.title}{" "} */}
+                  <nav><NavLink to={`/MovieDetail/${value.properties.title}`} className={styles.linkStyle}
+                  style={({ isActive }) => ({
+                    color: isActive ? '#000' : '#0B0820',
+                    textDecoration: isActive ? 'none' : 'none'
+                  })}>{value.properties.title}{" "}</NavLink></nav>
                   <Outlet />
-                  <b onClick={() => removeFav(value._id)}><FaHeart color="#b0d688" /></b>
+                  <b onClick={() => removeFav(value._id)}><FaHeart color="#7687BA" /></b>
                 </td>
               </tr>
             </tbody>
@@ -78,8 +81,14 @@ const Home = () => {
             <tbody className={styles.films}>
               <tr>
                 <td>
-                <nav><NavLink to={`/MovieDetail/${value.properties.title}`} className={styles.linkStyle}>{value.properties.title}{" "}</NavLink></nav>
-                  {/* {value.properties.title}{" "} */}
+                <nav>
+                  <NavLink to={`/MovieDetail/${value.properties.title}`}
+                    className={styles.linkStyle}
+                    style={({ isActive }) => ({
+                      color: isActive ? '#000' : '#0B0820',
+                      textDecoration: isActive ? 'none' : 'none'
+                    })}>{value.properties.title}{" "}</NavLink>
+                    </nav>
                   <b onClick={() => addFav(value._id)}><FaRegHeart /></b>
                 </td>
               </tr>
@@ -87,6 +96,21 @@ const Home = () => {
           </table>
         );
       })}
+      {result.map((value) => (
+        <div>
+          <h1>{value.properties.title}</h1>
+          <h4>Description</h4>
+          <p>{value.description}</p>
+          <h4>Release date</h4>
+          <p>{value.properties.release_date}</p>
+          <h4>Director</h4>
+          <p>{value.properties.director}</p>
+          <h4>Producer</h4>
+          <p>{value.properties.producer}</p>
+          <h4>Main characters</h4>
+          <p>{value.properties.characters}</p>
+        </div>
+      ))}
     </>
   );
 };
