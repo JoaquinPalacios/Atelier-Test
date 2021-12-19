@@ -31,9 +31,11 @@ const ItemContainer = () => {
         })
     }, [movieId])
     return (
+        <>
         <h1>Hello World!</h1>
-        // <h1>{films.properties.title}</h1>
-            // <MovieDetail key={films.properties.title} films={films} />
+        <h1>{films.properties.title}</h1>
+            {/* // <MovieDetail key={films.properties.title} films={films} /> */}
+        </>
     );
 }
  
