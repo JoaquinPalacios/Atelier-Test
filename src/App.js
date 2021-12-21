@@ -1,10 +1,9 @@
 import './App.css';
 
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import Home from './components/Home';
 import ItemContainer from './components/ItemContainer';
-// import MovieDetail from './components/MovieDetail'
 import Navbar from './components/Navbar';
 
 function App() {
@@ -12,10 +11,11 @@ function App() {
       <>
       <Navbar />
         <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path="/:movieId" element={<ItemContainer />} />
+            <Route path='/films' element={<Home />} />
+            <Route path="/" element={<Navigate replace to="/films" />} />
+            <Route path="/film/:movieId" element={<ItemContainer />} />
         </Routes> 
-        </>
+      </>
   );
 }
 

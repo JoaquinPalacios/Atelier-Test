@@ -62,7 +62,7 @@ const Home = () => {
             <tbody className={styles.films}>
               <tr>
                 <td>
-                  <nav><NavLink to={`/MovieDetail/${value.properties.title}`} className={styles.linkStyle}
+                  <nav><NavLink to={`/film/${value.properties.episode_id}`} className={styles.linkStyle}
                   style={({ isActive }) => ({
                     color: isActive ? '#000' : '#0B0820',
                     textDecoration: isActive ? 'none' : 'none'
@@ -82,7 +82,7 @@ const Home = () => {
               <tr>
                 <td>
                 <nav>
-                  <NavLink to={`/MovieDetail/${value.properties.title}`}
+                  <NavLink to={`/film/${value.properties.episode_id}`}
                     className={styles.linkStyle}
                     style={({ isActive }) => ({
                       color: isActive ? '#000' : '#0B0820',
@@ -96,7 +96,7 @@ const Home = () => {
           </table>
         );
       })}
-      {result.map((value) => (
+      {/* {result.map((value) => (
         <div>
           <h1>{value.properties.title}</h1>
           <h4>Description</h4>
@@ -110,7 +110,7 @@ const Home = () => {
           <h4>Main characters</h4>
           <p>{value.properties.characters}</p>
         </div>
-      ))}
+      ))} */}
     </>
   );
 };

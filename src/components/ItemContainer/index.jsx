@@ -1,42 +1,42 @@
 import { useEffect, useState } from "react";
 
+import MovieDetail from "../MovieDetail";
 import { useParams } from "react-router-dom";
 
-// import MovieDetail from "../MovieDetail";
+const showMovie = async (movieId) => {
+  const res = await fetch("https://www.swapi.tech/api/films/");
+  const json = await res.json();
+  const movie = json.result.find((value) => value.properties.episode_id === Number(movieId));
 
+  if (!movie) {
+    throw new Error("No match found.");
+  }
 
-const ShowMovie = (movieId) => {
-    const [result, setResult] = useState([]);
-
-    const fetchData = async () => {
-        const res = await fetch("https://www.swapi.tech/api/films/");
-        const json = await res.json();
-        setResult(json.result);
-    }
-    useEffect(() => {
-        fetchData();
-    }, []);
-    return new Promise((res) => 
-    res(result.find((value) => value.properties.title === movieId)))
+  return movie;
 }
 
 const ItemContainer = () => {
-    const [films, setFilms] = useState([]);
-    const { movieId } = useParams([]);
-    console.log('params movieId container', movieId)
+  const [films, setFilms] = useState({});
+  const { movieId } = useParams();
 
-    useEffect(() => {
-        ShowMovie(movieId).then((value) => {
-            setFilms(value.properties.title)
-        })
-    }, [movieId])
-    return (
-        <>
-        <h1>Hello World!</h1>
-        <h1>{films.properties.title}</h1>
-            {/* // <MovieDetail key={films.properties.title} films={films} /> */}
-        </>
-    );
-}
- 
+  useEffect(() => {
+    console.log('params movieId container', movieId);
+
+    showMovie(movieId)
+      .then((movie) => {
+        setFilms(movie);
+      })
+      .catch(error => {
+        console.error('error useEffet itemContainer', error)
+
+        setFilms({});
+      });
+  }, [movieId]);
+  console.log('films in itemContainer', {films})
+
+  return (
+      <MovieDetail key={films.properties?.episode_id} films={films} />
+  );
+};
+
 export default ItemContainer;

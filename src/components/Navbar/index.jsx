@@ -18,7 +18,7 @@ const Navbar = () => {
     return (
         <>            
             <div className={styles.navbarContainer}>
-                <NavLink to='./' 
+                <NavLink to='./films' 
                 className={styles.navbarHome} 
                 style={({ isActive }) => ({
                   color: isActive ? '#fff' : '#f4f4f4',
@@ -26,7 +26,7 @@ const Navbar = () => {
                 })}>Home</NavLink>
              {result.map((value) => (
                  <span className={styles.navbarItems}>
-                         <NavLink to={`/MovieDetail/${value.properties.title}`} style={({ isActive }) => ({
+                         <NavLink to={`/film/${value.properties.episode_id}`} style={({ isActive }) => ({
                   color: isActive ? '#fff' : '#d3d3d3',
                   background: isActive ? '#7600dc' : '#7600dc',
                   textDecoration: isActive ? 'none' : 'none'
