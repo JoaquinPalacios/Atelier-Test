@@ -9,11 +9,12 @@ const MovieDetail = ({ film }) => {
         try {
             const response = await fetch(characterURL);
             const data = await response.json();
-            const people = data.results;
-            if (response.ok) {
-              setTimeout(() => {
-                return people;
-              }, 1000);
+            // const people = data.results;
+            if (data.response.ok) {
+                setCharacters((oldPeople) => [...oldPeople, ...data.results]);
+            //   setTimeout(() => {
+            //     return people;
+            //   }, 1000);
             }
         } catch (err) {
           console.error("Error peoples", err);
@@ -35,9 +36,9 @@ const MovieDetail = ({ film }) => {
                 <h4>{film.description}</h4>
                 <p>Episode: {film.properties?.episode_id}.</p>
                 <p>Opening Crawl: <i>{film.properties?.opening_crawl}</i></p>
-                <p>Created: {film.properties?.created}.</p>
-                <p>Edited: {film.properties?.edited}.</p>
-                <p>Release date: {film.properties?.release_date}.</p>
+                <div className={styles.tooltip}>Important dates: <i><small>hover me please</small></i>
+                    <span className={styles.tooltiptext}>Created: {film.properties?.created}, Edited: {film.properties?.edited}, Release date: {film.properties?.release_date}.</span>
+                </div>
                 <p>Director: {film.properties?.director}.</p>
                 <p>Producer: {film.properties?.producer}.</p>
                 <p>Characters:</p>
