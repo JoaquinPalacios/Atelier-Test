@@ -35,7 +35,7 @@ const ItemContainer = () => {
   console.log('films in itemContainer', {film})
 
   return (
-      <MovieDetail key={film.properties?.episode_id} film={film} />
+      <MovieDetail key={film?.properties?.episode_id} film={film} />
   );
 };
 

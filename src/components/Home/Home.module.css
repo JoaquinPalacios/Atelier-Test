@@ -32,4 +32,8 @@
 }
 .linkStyle {
   text-decoration: none;
+  transition: all 0.2s;
+}
+.linkStyle:hover {
+  color: #f9f9f9 !important;
 }
