@@ -22,8 +22,9 @@ const MovieDetail = ({ film }) => {
     console.log('peoples MovieDetail', peoples)
     Promise.all([peoples]);
     useEffect(() => {
-        setTimeout(() => setCharacters([peoples]), 2500)
+        setTimeout(() => setCharacters([peoples]), 500)
     //   setCharacters([peoples]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     console.log("characters", characters);
 
