@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import styles from './MovieDetail.module.css';
+import styles from './MovieDetail.module.scss';
 
 const MovieDetail = ({ film }) => {
     const [characters, setCharacters] = useState([])

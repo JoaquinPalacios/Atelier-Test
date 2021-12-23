@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { NavLink } from "react-router-dom";
-import styles from './Navbar.module.css';
+import styles from './Navbar.module.scss';
 
 const Navbar = () => {
     const [result, setResult] = useState([]);

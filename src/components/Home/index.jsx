@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
-import styles from './Home.module.css';
+import styles from './Home.module.scss';
 
 const Home = () => {
   const [result, setResult] = useState([]);
