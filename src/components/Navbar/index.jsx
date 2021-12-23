@@ -24,15 +24,15 @@ const Navbar = () => {
                   color: isActive ? '#fff' : '#f4f4f4',
                   background: isActive ? '#7600dc' : '#7600dc',
                 })}>Home</NavLink>
-             {result.map((value) => (
-                 <span className={styles.navbarItems}>
-                         <NavLink to={`/film/${value.properties.episode_id}`} style={({ isActive }) => ({
-                  color: isActive ? '#fff' : '#d3d3d3',
-                  background: isActive ? '#7600dc' : '#7600dc',
-                  textDecoration: isActive ? 'none' : 'none'
-                })}>{value.properties.title}</NavLink>
-                 </span>                                  
-              ))}
+                {result.map((value) => (
+                    <span className={styles.navbarItems}>
+                            <NavLink to={`/film/${value.properties.episode_id}`} style={({ isActive }) => ({
+                               color: isActive ? '#fff' : '#d3d3d3',
+                               background: isActive ? '#7600dc' : '#7600dc',
+                               textDecoration: isActive ? 'none' : 'none'
+                               })}>{value.properties.title}</NavLink>
+                    </span>                                  
+                ))}
             </div>
         </>
     );

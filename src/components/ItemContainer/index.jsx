@@ -16,7 +16,7 @@ const showMovie = async (movieId) => {
 }
 
 const ItemContainer = () => {
-  const [films, setFilms] = useState({});
+  const [film, setFilm] = useState({});
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -24,18 +24,18 @@ const ItemContainer = () => {
 
     showMovie(movieId)
       .then((movie) => {
-        setFilms(movie);
+        setFilm(movie);
       })
       .catch(error => {
         console.error('error useEffet itemContainer', error)
 
-        setFilms({});
+        setFilm({});
       });
   }, [movieId]);
-  console.log('films in itemContainer', {films})
+  console.log('films in itemContainer', {film})
 
   return (
-      <MovieDetail key={films.properties?.episode_id} films={films} />
+      <MovieDetail key={film.properties?.episode_id} film={film} />
   );
 };
 
